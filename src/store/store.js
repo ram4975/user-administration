@@ -1,15 +1,28 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux'
-import loginResucer from '../reducers/login-reducer'
+import loginReducer from '../reducers/login-reducer'
 import {createLogger} from 'redux-logger'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise-middleware'
 
-var initialState = {
-    searchValue: '',
-    userList: [],
-    alert: ''
-}
+/*var initialState = {
+    login:{
+        userName: '',
+        passowrd: '',
+        isLogginSuccess: false
+    },
+    userProfile: {
+        firstName: '',
+        lastName: '',
+        eMail: '',
+        phoneNumber: ''
+    }
+}*/
+
+const userAdminReducer = combineReducers({
+    login: loginReducer
+})
+
 const middleware = applyMiddleware(promise(),thunk, createLogger()); 
-const store = createStore(loginResucer,initialState,middleware,
+const store = createStore(userAdminReducer,middleware,
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 export default store;

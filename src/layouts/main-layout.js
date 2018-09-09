@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-class MainLayout extends Component {
-  render() {
-    return (
-      <div className="container">
-        {this.props.children}
+import {Route} from 'react-router-dom';
+import Navigation from './navigation'
+import Footer from './footer'
+
+const MainLayout = ({component: Component, ...rest}) => {
+  return (
+    <Route {...rest} render={matchProps => (
+      <div>
+        <Navigation />
+        <Component {...matchProps} />
+        <Footer />
       </div>
-    );
-  }
-}
+    )} />
+  )
+};
+
+
 export default MainLayout;

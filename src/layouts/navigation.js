@@ -1,6 +1,8 @@
 
 
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+
 class Navigation extends Component {
   render() {
     return (
@@ -8,17 +10,14 @@ class Navigation extends Component {
         <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                <Link  className="nav-link" to={"/home"}>Home</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
-            </li>
-            <li className="nav-item">
-                <a className="nav-link disabled" href="#">Disabled</a>
+                 <Link  className="nav-link" to={"#"}>My Profile</Link>
             </li>
             </ul>
             <form className="form-inline mt-2 mt-md-0">
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+                <Link className="btn btn-outline-success my-2 my-sm-0" to={"/"}>Logout</Link>
             </form>
         </div>
         </nav>
