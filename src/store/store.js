@@ -1,5 +1,6 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import loginReducer from '../reducers/login-reducer'
+import profileReducer from '../reducers/profile-reducer'
 import {createLogger} from 'redux-logger'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise-middleware'
@@ -10,7 +11,7 @@ import promise from 'redux-promise-middleware'
         passowrd: '',
         isLogginSuccess: false
     },
-    userProfile: {
+    profile: {
         firstName: '',
         lastName: '',
         eMail: '',
@@ -19,10 +20,11 @@ import promise from 'redux-promise-middleware'
 }*/
 
 const userAdminReducer = combineReducers({
-    login: loginReducer
+    login: loginReducer,
+    profile: profileReducer
 })
 
 const middleware = applyMiddleware(promise(),thunk, createLogger()); 
-const store = createStore(userAdminReducer,middleware,
+const store = createStore(userAdminReducer,{},middleware,
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 export default store;

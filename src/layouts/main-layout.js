@@ -8,8 +8,9 @@ const MainLayout = ({component: Component, ...rest}) => {
     <Route {...rest} render={matchProps => (
       <div>
         <Navigation />
-        <Component {...matchProps} />
-        <Footer />
+        <main className="text-center my-5">
+          <Component {...matchProps} />
+        </main>
       </div>
     )} />
   )

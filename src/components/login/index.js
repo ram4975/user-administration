@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
 import LoginPage from './login-page.js'
 import {updateLoginField, validateUserLogin} from '../../actions/login-actions'
-import { withRouter } from "react-router-dom";
 
 // Map Redux state to component props
 function mapStateToProps(state) {
@@ -15,8 +14,8 @@ function mapDispatchToProps(dispatch) {
         updateField: event => dispatch((
             updateLoginField(event.target.id, event.target.value)
         )),
-        validateLogin: () => dispatch((
-            validateUserLogin()
+        validateLogin: (userName, password) => dispatch((
+            validateUserLogin(userName, password)
         ))
     }
 }
@@ -27,4 +26,4 @@ const Login = connect(
     mapDispatchToProps
 )(LoginPage);
 
-export default withRouter(Login);
+export default Login;
